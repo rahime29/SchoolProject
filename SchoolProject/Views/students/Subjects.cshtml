@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SchoolProject.Models.students_subjects>
+
+@{
+    ViewBag.Title = "Subjects";
+}
+
+<h2>Subjects</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.subjects_code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subjects.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.midterm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.final)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.avg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.subjects_code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subjects.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.midterm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.final)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.avg)
+        </td>
+        <td>
+            @Html.ActionLink("Update Note", "UpdateNotes", new { no = item.student_no , code = item.subjects_code}) |
+        </td>
+    </tr>
+}
+
+</table>

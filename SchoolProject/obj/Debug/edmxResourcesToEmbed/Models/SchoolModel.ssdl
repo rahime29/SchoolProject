@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="schooldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="academicians">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="title_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="no" />
+    </Key>
+    <Property Name="no" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="gano" Type="float" />
+  </EntityType>
+  <EntityType Name="students_subjects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="student_no" Type="int" Nullable="false" />
+    <Property Name="subjects_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="midterm" Type="float" />
+    <Property Name="final" Type="float" />
+    <Property Name="resit" Type="float" />
+    <Property Name="avg" Type="float" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="year" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="subjects">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="term" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="credit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="titles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="degree" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_academicians_academicians">
+    <End Role="titles" Type="Self.titles" Multiplicity="1" />
+    <End Role="academicians" Type="Self.academicians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="titles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="academicians">
+        <PropertyRef Name="title_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_students_subjects_students">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="students_subjects" Type="Self.students_subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="no" />
+      </Principal>
+      <Dependent Role="students_subjects">
+        <PropertyRef Name="student_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_students_subjects_subjects">
+    <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+    <End Role="students_subjects" Type="Self.students_subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subjects">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="students_subjects">
+        <PropertyRef Name="subjects_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="schooldbModelStoreContainer">
+    <EntitySet Name="academicians" EntityType="Self.academicians" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students_subjects" EntityType="Self.students_subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subjects" EntityType="Self.subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="titles" EntityType="Self.titles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_academicians_academicians" Association="Self.FK_academicians_academicians">
+      <End Role="titles" EntitySet="titles" />
+      <End Role="academicians" EntitySet="academicians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_students_subjects_students" Association="Self.FK_students_subjects_students">
+      <End Role="students" EntitySet="students" />
+      <End Role="students_subjects" EntitySet="students_subjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_students_subjects_subjects" Association="Self.FK_students_subjects_subjects">
+      <End Role="subjects" EntitySet="subjects" />
+      <End Role="students_subjects" EntitySet="students_subjects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

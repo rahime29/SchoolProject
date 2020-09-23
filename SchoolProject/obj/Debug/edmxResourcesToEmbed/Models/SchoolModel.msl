@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="schooldbModelStoreContainer" CdmEntityContainer="schooldbEntities">
+    <EntitySetMapping Name="academicians">
+      <EntityTypeMapping TypeName="schooldbModel.academicians">
+        <MappingFragment StoreEntitySet="academicians">
+          <ScalarProperty Name="title_id" ColumnName="title_id" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="schooldbModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="gano" ColumnName="gano" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="no" ColumnName="no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students_subjects">
+      <EntityTypeMapping TypeName="schooldbModel.students_subjects">
+        <MappingFragment StoreEntitySet="students_subjects">
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="avg" ColumnName="avg" />
+          <ScalarProperty Name="resit" ColumnName="resit" />
+          <ScalarProperty Name="final" ColumnName="final" />
+          <ScalarProperty Name="midterm" ColumnName="midterm" />
+          <ScalarProperty Name="subjects_code" ColumnName="subjects_code" />
+          <ScalarProperty Name="student_no" ColumnName="student_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subjects">
+      <EntityTypeMapping TypeName="schooldbModel.subjects">
+        <MappingFragment StoreEntitySet="subjects">
+          <ScalarProperty Name="credit" ColumnName="credit" />
+          <ScalarProperty Name="term" ColumnName="term" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="titles">
+      <EntityTypeMapping TypeName="schooldbModel.titles">
+        <MappingFragment StoreEntitySet="titles">
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
